@@ -3,7 +3,7 @@ const router = express.Router();
 const Mood = require('../models/mood');
 const run = require('../geminiApi'); // Assuming this function processes the message and returns mood/suggestions.
 
-router.post('/createUser', async (req, res) => {
+router.post('/', async (req, res) => {
   const { user_id, message, date } = req.body;
 
   // Validate request body
@@ -45,7 +45,7 @@ router.get('/:user_id', async (req, res) => {
     res.status(500).json({ error: 'Failed to retrieve moods.' });
   }
 });
-router.get('/getAll', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const moods = await Mood.find({ user_id: req.params.user_id })
       .populate('user_id', 'name email') // Optional: Populate user details.
