@@ -23,3 +23,7 @@ app.listen(process.env.PORT, () => {
 });
 
 //const run = require('./geminiApi');
+
+app.use("/", (req, res) => {
+    res.json("API IS WORKING")
+})
